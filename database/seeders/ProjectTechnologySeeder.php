@@ -6,6 +6,8 @@ use App\Models\Project;
 use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class ProjectTechnologySeeder extends Seeder
 {
@@ -14,14 +16,23 @@ class ProjectTechnologySeeder extends Seeder
      */
     public function run()
     {
+        // Disabilita temporaneamente i vincoli delle chiavi esterne
+        Schema::disableForeignKeyConstraints();
+
+        // Svuota la tabella pivot
+        DB::table('project_technology')->truncate();
+
+        // Riabilita i vincoli delle chiavi esterne
+        Schema::enableForeignKeyConstraints();
+
         // Seleziona tutti i progetti e tutte le tecnologie esistenti
         $projects = Project::all();
         $technologies = Technology::all();
 
         // Cicla su ogni progetto
         foreach ($projects as $project) {
-            // in questo caso scegliamo un numero tra 1 e la metà delle tecnologie disponibili
-            $numberOfTechnologies = rand(1, $technologies->count());
+            // Genera un numero casuale di tecnologie associate a ciascun progetto
+            $numberOfTechnologies = rand(0, $technologies->count());
 
             // Prendi un numero casuale di tecnologie
             $randomTechnologies = $technologies->random($numberOfTechnologies);
