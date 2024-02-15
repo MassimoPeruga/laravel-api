@@ -7,7 +7,7 @@ L’esercizio di oggi è suddiviso in milestone ed è importante che ne seguiate
 - [x]Milestone 1
     1. nome repo 1: laravel-api
     2. Aggiungiamo al nostro progetto Laravel una nuovo Api/ProjectController. Questo controller risponderà a delle richieste via API e si occuperà di   restituire la lista dei progetti presenti nel database in formato json.
-- [ ]Milestone 2
+- [x]Milestone 2
     1. Testiamo la chiamata API tramite Postman e assicuriamoci di ricevere i dati correttamente.
 - [ ]Milestone 3
     1. nome repo 2: vite-boolfolio
